@@ -12,7 +12,9 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
   {% load static %}
   <!-- Favicons -->
-  <link rel="stylesheet" href="{% static '/final.css' %}">
+  {% comment %} <link rel="stylesheet" href="{% static '/new.css' %}"> {% endcomment %}
+  {% comment %} <link rel="stylesheet" href="{% static '/new.css' %}"> {% endcomment %}
+  <link rel="stylesheet" href="{% static '/end.css' %}">
   <link href="{% static 'img/logo.png' %}" rel="icon">
   <link href="{% static 'img/logo.png' %}" rel="apple-touch-icon">
 
@@ -147,10 +149,15 @@
         <div class="row counters">
 
           <div class="col-lg-3 col-6 text-center">
-            <span data-purecounter-start="0" data-purecounter-end="2" data-purecounter-duration="1" class="purecounter"></span>
-            <p>Students</p>
+            {% for student in students %}
+              <!-- Looping through all trainers to count them -->
+            {% empty %}
+              <!-- No trainers available -->
+              <span data-purecounter-start="0" data-purecounter-end="0" data-purecounter-duration="1" class="purecounter"></span>
+            {% endfor %}
+            <span data-purecounter-start="0" data-purecounter-end="{{ students|length }}" data-purecounter-duration="1" class="purecounter"></span>
+            <p>students</p>
           </div>
-
           <div class="col-lg-3 col-6 text-center">
             {% for course in courses %}
               <!-- Looping through all trainers to count them -->
@@ -498,7 +505,6 @@
           },
         });
       });
-    
       $(".enroll-button").on("click", ".btn-primary", function () {
         // Check if the user is logged in
         var isLoggedIn = sessionStorage.getItem("loggedIn");
