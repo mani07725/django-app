@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-p6=)uk4cmssukp-mw=3qr*@wxz&#6=+i4sl!%6zdxaelzh4kfg
 DEBUG = True
 
 # ALLOWED_HOSTS = ['127.0.0.1','ilearnhub-d53ddaa5b8a0.herokuapp.com']
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -43,7 +43,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
+    #'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -70,7 +70,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'online_learning_platform.wsgi.application'
+ASGI_APPLICATION = 'online_learning_platform.wsgi.application'
 
 
 # Database
